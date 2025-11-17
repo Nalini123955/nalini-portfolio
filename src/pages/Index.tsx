@@ -8,6 +8,7 @@ import { ProjectsSection } from "../components/ProjectsSection";
 import { ContactSection } from "../components/ContactSection";
 import { Navigation } from "../components/Navigation";
 import { ParticlesBackground } from "../components/ParticlesBackground";
+import Certifications from "../components/Certifications"; // ✅ Added this import
 
 // ✅ Custom Leetcode Icon (SVG)
 const LeetcodeIcon = (props: any) => (
@@ -22,12 +23,14 @@ const LeetcodeIcon = (props: any) => (
   </svg>
 );
 
+// ✅ Added Certifications section before Contact
 const sections = [
-  { id: 'hero', component: HeroSection, title: 'Home' },
-  { id: 'about', component: AboutSection, title: 'About' },
-  { id: 'skills', component: SkillsSection, title: 'Skills' },
-  { id: 'projects', component: ProjectsSection, title: 'Projects' },
-  { id: 'contact', component: ContactSection, title: 'Contact' }
+  { id: "hero", component: HeroSection, title: "Home" },
+  { id: "about", component: AboutSection, title: "About" },
+  { id: "skills", component: SkillsSection, title: "Skills" },
+  { id: "projects", component: ProjectsSection, title: "Projects" },
+  { id: "certifications", component: Certifications, title: "Certifications" }, // ✅ New
+  { id: "contact", component: ContactSection, title: "Contact" },
 ];
 
 const Index = () => {
@@ -36,10 +39,8 @@ const Index = () => {
 
   const scrollToSection = (index: number) => {
     if (isScrolling || index < 0 || index >= sections.length) return;
-    
     setIsScrolling(true);
     setCurrentSection(index);
-    
     setTimeout(() => setIsScrolling(false), 1000);
   };
 
@@ -47,7 +48,6 @@ const Index = () => {
     const handleWheel = (e: WheelEvent) => {
       e.preventDefault();
       if (isScrolling) return;
-
       if (e.deltaY > 0) {
         scrollToSection(currentSection + 1);
       } else {
@@ -56,19 +56,16 @@ const Index = () => {
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowDown') {
-        scrollToSection(currentSection + 1);
-      } else if (e.key === 'ArrowUp') {
-        scrollToSection(currentSection - 1);
-      }
+      if (e.key === "ArrowDown") scrollToSection(currentSection + 1);
+      else if (e.key === "ArrowUp") scrollToSection(currentSection - 1);
     };
 
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener('wheel', handleWheel);
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [currentSection, isScrolling]);
 
@@ -77,7 +74,7 @@ const Index = () => {
   return (
     <div className="relative min-h-screen bg-black overflow-hidden">
       <ParticlesBackground />
-      
+
       {/* Navigation */}
       <Navigation 
         sections={sections} 
@@ -111,8 +108,8 @@ const Index = () => {
             onClick={() => scrollToSection(index)}
             className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${
               index === currentSection 
-                ? 'bg-purple-500 border-purple-500 shadow-lg shadow-purple-500/50' 
-                : 'border-gray-500 hover:border-purple-400'
+                ? "bg-purple-500 border-purple-500 shadow-lg shadow-purple-500/50" 
+                : "border-gray-500 hover:border-purple-400"
             }`}
           />
         ))}
@@ -122,7 +119,7 @@ const Index = () => {
       <motion.button
         onClick={() => scrollToSection(currentSection - 1)}
         className={`fixed top-8 left-1/2 -translate-x-1/2 z-50 p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 transition-opacity ${
-          currentSection === 0 ? 'opacity-30 cursor-not-allowed' : 'opacity-70 hover:opacity-100'
+          currentSection === 0 ? "opacity-30 cursor-not-allowed" : "opacity-70 hover:opacity-100"
         }`}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -134,7 +131,7 @@ const Index = () => {
       <motion.button
         onClick={() => scrollToSection(currentSection + 1)}
         className={`fixed bottom-8 left-1/2 -translate-x-1/2 z-50 p-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 transition-opacity ${
-          currentSection === sections.length - 1 ? 'opacity-30 cursor-not-allowed' : 'opacity-70 hover:opacity-100'
+          currentSection === sections.length - 1 ? "opacity-30 cursor-not-allowed" : "opacity-70 hover:opacity-100"
         }`}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -172,4 +169,3 @@ const Index = () => {
 };
 
 export default Index;
-   

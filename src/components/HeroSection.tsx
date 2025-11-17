@@ -12,6 +12,7 @@ export const HeroSection = () => {
         x: (e.clientX / window.innerWidth) * 2 - 1,
         y: -(e.clientY / window.innerHeight) * 2 + 1
       });
+      
     };
 
     window.addEventListener('mousemove', handleMouseMove);
