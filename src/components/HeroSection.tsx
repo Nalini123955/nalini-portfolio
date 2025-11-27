@@ -117,7 +117,7 @@ export const HeroSection = () => {
   href="/Nalini_Resume.pdf"
   target="_blank"
   rel="noopener noreferrer"
-  download="Nalini_Saravanan_Resume.pdf"
+  download="software_Developer.pdf"
 >
 
           <motion.button

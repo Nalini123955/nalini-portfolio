@@ -7,6 +7,7 @@ import expenseImg from "../images/expense.png";
 import blogImg from "../images/blog.png";
 import elearningsImg from "../images/elearnings.png";
 import empsImg from "../images/emps.png";
+import deliveryImg from "../images/delivery.png";
 
 interface Project {
   id: number;
@@ -44,6 +45,17 @@ export const ProjectsSection = () => {
       image: academyImg,
       github: "https://github.com/Nalini123955/nalini_academy.git",
       demo: "https://naliniacademy.vercel.app/",
+      category: "Web App",
+    },
+    {
+      id: 4,
+      title: "Delivery Management Tracker",
+      description:
+        "Delivery Tracker Management System is a web-based application that helps manage and monitor customer orders and deliveries efficiently. It allows users to add new delivery details, update order status, and track real-time progress. The system stores customer information securely and ensures smooth coordination between delivery personnel and admin. With an easy-to-use interface, it improves accuracy, reduces manual effort, and streamlines the entire delivery workflow. It is ideal for small businesses to manage multiple deliveries in an organized way.",
+      tech: ["Python","Flask","SQLite","HTML","CSS","jinja"],
+      image: deliveryImg,
+      github: "https://github.com/Nalini123955/Delivery_Tracker.git",
+      demo: "https://nallu11904.pythonanywhere.com/",
       category: "Web App",
     },
     {
